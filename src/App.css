@@ -1,0 +1,48 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+img {
+  max-width: 80vw;
+  border-radius: 5px;
+}
+
+input {
+  height: 2rem;
+  font-size: 1rem;
+}
+
+.explanation-container {
+  background-color: rgb(20, 19, 19);
+  border-radius: 5px;
+}
+
+.explanation {
+  padding: 2rem 2rem 0 2rem;
+}
+
+.title {
+  text-decoration: underline;
+  font-size: 1.5rem;
+}
+
+.loading {
+  animation-name: rotate;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
