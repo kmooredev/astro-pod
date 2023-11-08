@@ -16,9 +16,7 @@ interface ImageData {
   url: string;
 }
 
-async function fetchImageData({
-  queryKey,
-}: QueryFunctionContext): Promise<ImageData> {
+async function fetchImageData({ queryKey }: QueryFunctionContext): Promise<ImageData> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, date] = queryKey;
   const response = await fetch(
@@ -38,15 +36,20 @@ const NasaImage = (props: AppProps) => {
 
   return query.isFetched && !query.isLoading ? (
     <>
-      <h2 className="title">{query.data.title}</h2>
-      <img src={query.data.hdurl} alt={query.data.explanation}></img>
-      <div className="explanation-container">
-        <p className="explanation">{query.data.explanation}</p>
+      <h2 className='title'>{query.data.title}</h2>
+      {query.data.media_type === 'video' && (
+        <iframe title='space-video' src={query.data.url} allowFullScreen className='video'></iframe>
+      )}
+      {query.data.media_type === 'image' && (
+        <img src={query.data.hdurl} alt={query.data.explanation} />
+      )}
+      <div className='explanation-container'>
+        <p className='explanation'>{query.data.explanation}</p>
         <small>Copyright: {query.data.copyright}</small>
       </div>
     </>
   ) : (
-    <h1 className="loading">🌀</h1>
+    <h1 className='loading'>🌀</h1>
   );
 };
 
